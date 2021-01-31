@@ -1,0 +1,40 @@
+<h1>Ruby on Rails スケジュール管理アプリ</h1>
+
+
+<h2>スケジュール新規作成</h2>
+
+<%= form_for @user do |f| %>
+    <table>
+        <tr>
+            <th><%= f.label :title ,"タイトル" %></th>
+            <td><%= f.text_field :title %></td>
+        </tr>
+        <tr>
+            <th><%= f.label :start ,"開始日" %></th>
+            <td><%= f.date_field :start %></td>
+        </tr>
+        <tr>
+            <th><%= f.label :fin ,"終了日" %></th>
+            <td><%= f.date_field :fin %></td>
+        </tr>
+        <tr>
+            <th><%= f.label :allday, "終日" %></th>
+            <td><%= f.check_box :allday, {}, "○", nil %></td>
+        </tr>
+        <tr>
+            <th><%= f.label :memo ,"スケジュールメモ" %></th>
+            <td><%= f.text_area :memo %></td>
+        </tr>    
+        
+    </table>
+    <div>
+        <ul>
+            <li><%= f.submit "登録完了する"%></li>
+            <li><%= link_to "スケジュール一覧に戻る", :users %></li>
+        </ul>
+    </div>
+<% end %>
+
+
+<h1>現在の日時：<%= Date.current.strftime('%Y年 %m月 %d日') %>
+　スケジュール合計：<%= User.all.count(:id) %></h1>
